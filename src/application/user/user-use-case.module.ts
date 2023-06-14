@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
-import { DataServicesModule } from '../../infrastructure/data-service/data-service.module';
-import { UserFactoryService } from './user-factory.service';
-import { UserUseCase } from './user.use-case';
+
+import { DataServicesModule } from 'src/infrastructure';
+import { UserFactoryService } from './fatories';
+import { RechargeAccountUseCase, RegisterUserUseCase } from './use-cases';
 
 @Module({
   imports: [DataServicesModule],
-  providers: [UserFactoryService, UserUseCase],
-  exports: [UserFactoryService, UserUseCase],
+  providers: [UserFactoryService, RegisterUserUseCase, RechargeAccountUseCase],
+  exports: [UserFactoryService, RegisterUserUseCase, RechargeAccountUseCase],
 })
 export class UserUseCaseModule {}

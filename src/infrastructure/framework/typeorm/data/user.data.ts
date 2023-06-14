@@ -21,7 +21,6 @@ export class UserData extends UserEntity {
   @Column({ type: 'varchar', length: 255, nullable: false, unique: true })
   password: string;
 
-  // @Column({ type: 'int', nullable: false, default: 1000 })
   @Column({ type: 'int', nullable: false })
   deposit: number;
 }
