@@ -31,8 +31,8 @@ export class UserUseCase {
     ).pipe(
       switchMap((user: UserEntity) => {
         user.deposit += userRechargeAccount.deposit;
-        const newSadalUser = this.userFactoryService.updateUserDeposit(user);
-        return from(this.dataServices.user.update(user.idUser, newSadalUser));
+        const newSadalUser = this.userFactoryService.updateUser(user);
+        return from(this.dataServices.user.create(newSadalUser));
       }),
       catchError(() =>
         throwError(() => new NotFoundException('User not found')),

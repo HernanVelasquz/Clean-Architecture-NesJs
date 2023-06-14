@@ -14,14 +14,15 @@ export class UserFactoryService {
     return newUser;
   }
 
-  updateUserDeposit(updateUserDeposit: UserEntity) {
+  updateUser(updateUser: UserEntity) {
     const newUser = new UserEntity();
-    newUser.fullName = updateUserDeposit.fullName;
-    newUser.typeDocument = updateUserDeposit.typeDocument;
-    newUser.numberDocument = updateUserDeposit.numberDocument;
-    newUser.email = updateUserDeposit.email;
-    newUser.password = updateUserDeposit.password;
-    newUser.deposit = updateUserDeposit.deposit;
+    newUser.idUser = updateUser.idUser;
+    newUser.fullName = updateUser.fullName;
+    newUser.typeDocument = updateUser.typeDocument;
+    newUser.numberDocument = updateUser.numberDocument;
+    newUser.email = updateUser.email;
+    newUser.password = updateUser.password;
+    newUser.deposit = updateUser.deposit;
     return newUser;
   }
 }
