@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UserEntity } from '../../domain/entities/user.entity';
+import { UserEntity } from 'src/domain';
 
 @Injectable()
 export class UserFactoryService {
@@ -11,6 +11,17 @@ export class UserFactoryService {
     newUser.email = createUserDto.email;
     newUser.password = createUserDto.password;
     newUser.deposit = 1000;
+    return newUser;
+  }
+
+  updateUserDeposit(updateUserDeposit: UserEntity) {
+    const newUser = new UserEntity();
+    newUser.fullName = updateUserDeposit.fullName;
+    newUser.typeDocument = updateUserDeposit.typeDocument;
+    newUser.numberDocument = updateUserDeposit.numberDocument;
+    newUser.email = updateUserDeposit.email;
+    newUser.password = updateUserDeposit.password;
+    newUser.deposit = updateUserDeposit.deposit;
     return newUser;
   }
 }

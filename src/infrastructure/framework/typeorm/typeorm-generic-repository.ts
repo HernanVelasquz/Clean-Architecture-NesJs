@@ -1,5 +1,6 @@
 import { from, Observable, switchMap } from 'rxjs';
-import { Equal, FindOptionsWhere, ObjectLiteral, Repository } from 'typeorm';
+import { FindOptionsWhere, ObjectLiteral, Repository } from 'typeorm';
+
 import { IGenericRepository } from 'src/domain';
 
 export class TypeOrmGenericRepository<T extends ObjectLiteral>
@@ -18,7 +19,7 @@ export class TypeOrmGenericRepository<T extends ObjectLiteral>
 
   getEmail(email: string): Observable<T | null> {
     return from(
-      this.repository.findOne({ email } as unknown as FindOptionsWhere<T>),
+      this.repository.findOneBy({ email } as unknown as FindOptionsWhere<T>),
     );
   }
   create(item: T): Observable<T> {
