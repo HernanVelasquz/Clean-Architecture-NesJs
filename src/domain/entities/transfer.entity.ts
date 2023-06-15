@@ -1,5 +1,5 @@
 export class TransferEntity {
-  idTransfer: string;
+  idTransfer?: string;
   toEmail: string;
   fromEmail: string;
   valueTransfer: number;

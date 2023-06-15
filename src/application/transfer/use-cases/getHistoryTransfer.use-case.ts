@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { from, Observable } from 'rxjs';
 import { TransferEntity } from 'src/domain';
-import { DependencyTransferAbstract } from './abstracts/dependency-transfer.abstracts';
+import { DependencyTransferAbstract } from './abstracts';
 
 @Injectable()
 export class GetHistoryTransferUseCase extends DependencyTransferAbstract {

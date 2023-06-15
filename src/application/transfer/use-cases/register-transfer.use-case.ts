@@ -3,8 +3,8 @@ import { from, Observable, map, switchMap } from 'rxjs';
 
 import { UserFactoryService } from 'src/application/user';
 import { IDataServices, TransferEntity, UserEntity } from 'src/domain';
-import { TransferFactoryService } from '../factories/transfer-factory.service';
-import { DependencyTransferAbstract } from './abstracts/dependency-transfer.abstracts';
+import { TransferFactoryService } from '../factories';
+import { DependencyTransferAbstract } from './abstracts';
 
 @Injectable()
 export class RegisterTransferUseCase extends DependencyTransferAbstract {

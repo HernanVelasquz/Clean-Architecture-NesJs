@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { IDataServices } from 'src/domain';
-import { TransferFactoryService } from '../../factories/transfer-factory.service';
+import { TransferFactoryService } from '../../factories';
 
 @Injectable()
 export abstract class DependencyTransferAbstract {
