@@ -3,10 +3,10 @@ import { NotFoundException } from '@nestjs/common/exceptions';
 import { catchError, from, Observable, switchMap, throwError } from 'rxjs';
 
 import { UserEntity } from 'src/domain';
-import { DependencyAbstract } from './abstracts';
+import { DependencyUserAbstract } from './abstracts';
 
 @Injectable()
-export class RechargeAccountUseCase extends DependencyAbstract {
+export class RechargeAccountUseCase extends DependencyUserAbstract {
   public rechargeAccount(
     userRechargeAccount: UserEntity,
   ): Observable<UserEntity | null> {

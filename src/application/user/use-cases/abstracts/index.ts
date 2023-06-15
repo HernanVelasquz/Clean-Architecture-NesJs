@@ -1,1 +1,1 @@
-export * from './dependency.abstract';
+export * from './dependency-user.abstract';
