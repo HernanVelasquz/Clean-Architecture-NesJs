@@ -22,8 +22,6 @@ export class RegisterTransferUseCase extends DependencyTransferAbstract {
     return from(this.validateUser(transferDto)).pipe(
       switchMap((users) => {
         const [toUser, fromUser] = users;
-        console.log({ fromUser, toUser });
-
         if (
           fromUser.deposit < transferDto.valueTransfer ||
           transferDto.valueTransfer > fromUser.deposit
@@ -47,12 +45,16 @@ export class RegisterTransferUseCase extends DependencyTransferAbstract {
   }
 
   private validateUser(userDto: TransferEntity): Observable<UserEntity[]> {
-    const arrUser = [userDto.fromEmail, userDto.toEmail];
+    const { fromEmail, toEmail } = userDto;
     return from(this.dataServices.user.getAll()).pipe(
       map((users: UserEntity[]) => {
-        const existingUsers = users.filter((user) =>
-          arrUser.includes(user.email),
+        const accountUserFrom = users.filter(
+          (users) => users.email === fromEmail,
         );
+        const accountUserTo = users.filter((users) => users.email === toEmail);
+
+        const existingUsers = [...accountUserTo, ...accountUserFrom];
+        console.log(existingUsers);
 
         if (existingUsers.length < 1) {
           throw new InternalServerErrorException(
