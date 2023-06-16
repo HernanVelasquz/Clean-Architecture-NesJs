@@ -1,5 +1,4 @@
-import { Test } from '@nestjs/testing';
-import { UserEntity } from 'src/domain';
+import { UserEntity } from '../user.entity';
 
 describe('User Entity', () => {
   // Tests that a new user can be created with all required fields

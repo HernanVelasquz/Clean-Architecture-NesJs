@@ -3,6 +3,7 @@ import { from, Observable, map, switchMap } from 'rxjs';
 
 import { UserFactoryService } from 'src/application/user';
 import { IDataServices, TransferEntity, UserEntity } from 'src/domain';
+import { InsufficientFundsException } from 'src/infrastructure';
 import { TransferFactoryService } from '../factories';
 import { DependencyTransferAbstract } from './abstracts';
 
@@ -21,14 +22,12 @@ export class RegisterTransferUseCase extends DependencyTransferAbstract {
   ): Observable<TransferEntity> {
     return from(this.validateUser(transferDto)).pipe(
       switchMap((users) => {
-        const [toUser, fromUser] = users;
+        const [fromUser, toUser] = users;
         if (
           fromUser.deposit < transferDto.valueTransfer ||
           transferDto.valueTransfer > fromUser.deposit
         ) {
-          throw new InternalServerErrorException(
-            'El remitente no tiene suficientes fondos',
-          );
+          throw new InsufficientFundsException();
         }
         fromUser.deposit -= transferDto.valueTransfer;
         toUser.deposit += transferDto.valueTransfer;
@@ -48,20 +47,14 @@ export class RegisterTransferUseCase extends DependencyTransferAbstract {
     const { fromEmail, toEmail } = userDto;
     return from(this.dataServices.user.getAll()).pipe(
       map((users: UserEntity[]) => {
-        const accountUserFrom = users.filter(
-          (users) => users.email === fromEmail,
-        );
-        const accountUserTo = users.filter((users) => users.email === toEmail);
-
-        const existingUsers = [...accountUserTo, ...accountUserFrom];
-        console.log(existingUsers);
-
-        if (existingUsers.length < 1) {
+        const fromUser = users.find((users) => users.email === fromEmail);
+        const toUser = users.find((users) => users.email === toEmail);
+        if (!fromUser || !toUser) {
           throw new InternalServerErrorException(
             `Al usuario que quiere realizar la transferencia no tiene cuenta registrada`,
           );
         }
-        return existingUsers;
+        return [fromUser, toUser];
       }),
     );
   }
