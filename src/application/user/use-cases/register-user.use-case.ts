@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { hash } from 'bcrypt';
-import { from, Observable, switchMap } from 'rxjs';
+import { from, Observable, switchMap, catchError, throwError } from 'rxjs';
 import { UserEntity } from 'src/domain';
+import { DuplicateUserException } from 'src/infrastructure';
 import { DependencyUserAbstract } from './abstracts';
 
 @Injectable()
@@ -13,6 +14,9 @@ export class RegisterUserUseCase extends DependencyUserAbstract {
         const newUser = this.userFactoryService.createNewUser(createUserDto);
         return from(this.dataServices.user.create(newUser));
       }),
+      catchError(() =>
+        throwError(() => new DuplicateUserException(createUserDto.email)),
+      ),
     );
   }
 }
