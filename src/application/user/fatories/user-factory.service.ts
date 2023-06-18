@@ -10,19 +10,21 @@ export class UserFactoryService {
     newUser.numberDocument = createUserDto.numberDocument;
     newUser.email = createUserDto.email;
     newUser.password = createUserDto.password;
+    newUser.transactions = [];
     newUser.deposit = 1000;
     return newUser;
   }
 
   updateUser(updateUser: UserEntity) {
     const newUser = new UserEntity();
-    newUser.idUser = updateUser.idUser;
+    newUser.id = updateUser.id;
     newUser.fullName = updateUser.fullName;
     newUser.typeDocument = updateUser.typeDocument;
     newUser.numberDocument = updateUser.numberDocument;
     newUser.email = updateUser.email;
     newUser.password = updateUser.password;
     newUser.deposit = updateUser.deposit;
+    newUser.transactions = updateUser.transactions;
     return newUser;
   }
 }

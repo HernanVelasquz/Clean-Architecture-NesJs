@@ -8,6 +8,8 @@ export class TransferFactoryService {
     newTransfer.toEmail = createTransferDto.toEmail;
     newTransfer.fromEmail = createTransferDto.fromEmail;
     newTransfer.valueTransfer = createTransferDto.valueTransfer;
+    newTransfer.date = new Date();
+    newTransfer.user = createTransferDto.user;
     return newTransfer;
   }
 }

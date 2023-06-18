@@ -1,6 +1,10 @@
+import { UserEntity } from './user.entity';
+
 export class TransferEntity {
-  idTransfer?: string;
+  id?: string;
   toEmail: string;
   fromEmail: string;
   valueTransfer: number;
+  date?: Date;
+  user?: UserEntity;
 }
