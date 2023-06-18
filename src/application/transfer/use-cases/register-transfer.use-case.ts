@@ -31,13 +31,13 @@ export class RegisterTransferUseCase extends DependencyTransferAbstract {
         }
         fromUser.deposit -= transferDto.valueTransfer;
         toUser.deposit += transferDto.valueTransfer;
-
+        transferDto.user = fromUser;
         const fromFactory = this.userFactoryService.updateUser(fromUser);
         const toFactory = this.userFactoryService.updateUser(toUser);
         const transferFacoty =
           this.transferFactoryService.createNewTransfer(transferDto);
-        this.dataServices.user.update(fromFactory.idUser, fromFactory);
-        this.dataServices.user.update(toFactory.idUser, toFactory);
+        this.dataServices.user.update(fromFactory.id, fromFactory);
+        this.dataServices.user.update(toFactory.id, toFactory);
         return from(this.dataServices.transefer.create(transferFacoty));
       }),
     );

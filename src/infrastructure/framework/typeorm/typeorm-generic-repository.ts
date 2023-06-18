@@ -13,13 +13,17 @@ export class TypeOrmGenericRepository<T extends ObjectLiteral>
 
   get(id: string): Observable<T | null> {
     return from(
-      this.repository.findOneBy({ id } as unknown as FindOptionsWhere<T>),
+      this.repository.findOneBy({
+        id,
+      } as unknown as FindOptionsWhere<T>),
     );
   }
 
   getEmail(email: string): Observable<T | null | T[]> {
     return from(
-      this.repository.findOneBy({ email } as unknown as FindOptionsWhere<T>),
+      this.repository.findOneBy({
+        where: { email: email },
+      } as unknown as FindOptionsWhere<T>),
     );
   }
   create(item: T): Observable<T> {

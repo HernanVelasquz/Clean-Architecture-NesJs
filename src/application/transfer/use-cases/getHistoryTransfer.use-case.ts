@@ -5,13 +5,10 @@ import { DependencyTransferAbstract } from './abstracts';
 
 @Injectable()
 export class GetHistoryTransferUseCase extends DependencyTransferAbstract {
-  public historyTransferUseCase(
-    emailFrom: string,
-  ): Observable<TransferEntity | null | TransferEntity[]> {
-    return from(this.dataServices.transefer.getEmail(emailFrom)).pipe(
+  public historyTransferUseCase(idUser: string): Observable<TransferEntity[]> {
+    return from(this.dataServices.transefer.getAll()).pipe(
       map((historyTransfer) => {
-        console.log(historyTransfer);
-        return historyTransfer;
+        return historyTransfer.filter((history) => history.user?.id === idUser);
       }),
     );
   }

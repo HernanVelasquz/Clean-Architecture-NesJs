@@ -22,8 +22,10 @@ export class TransferController {
     return from(this.registerTransferUseCase.registerTransfer(createUserDto));
   }
 
-  @Get(':emailFrom')
-  getHistoryTransfer(@Param('emailFrom') email: string): Observable<any> {
-    return from(this.getHistoryTransferUseCase.historyTransferUseCase(email));
+  @Get(':client_id')
+  getHistoryTransfer(@Param('client_id') client_id: string): Observable<any> {
+    return from(
+      this.getHistoryTransferUseCase.historyTransferUseCase(client_id),
+    );
   }
 }

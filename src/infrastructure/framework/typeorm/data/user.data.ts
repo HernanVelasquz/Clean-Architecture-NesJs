@@ -1,10 +1,11 @@
 import { UserEntity } from 'src/domain';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { TransferData } from './transfer.data';
 
 @Entity({ name: 'Users' })
 export class UserData extends UserEntity {
-  @PrimaryGeneratedColumn('uuid')
-  idUser: string;
+  @PrimaryGeneratedColumn('uuid', { name: 'client_id' })
+  id: string;
 
   @Column({ type: 'varchar', length: 255, nullable: false })
   fullName: string;
@@ -23,4 +24,10 @@ export class UserData extends UserEntity {
 
   @Column({ type: 'int', nullable: false })
   deposit: number;
+
+  @OneToMany(() => TransferData, (transfers) => transfers.user, {
+    onDelete: 'RESTRICT',
+    onUpdate: 'RESTRICT',
+  })
+  transactions: Array<TransferData>;
 }
