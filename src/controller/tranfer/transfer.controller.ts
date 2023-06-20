@@ -1,4 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { UseGuards } from '@nestjs/common/decorators';
+import { AuthGuard } from '@nestjs/passport';
 import { from, Observable } from 'rxjs';
 
 import {
@@ -8,6 +10,7 @@ import {
 import { TransferEntity } from 'src/domain';
 import { TransferDto } from './dto';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('transfer')
 export class TransferController {
   constructor(

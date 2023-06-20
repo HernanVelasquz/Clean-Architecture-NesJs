@@ -6,6 +6,7 @@ import { UserUseCaseModule } from './application/user/user-use-case.module';
 import { UserController } from './controller/user/user.controller';
 import { TransferUseCaseModule } from './application/transfer/transfer-use-case.module';
 import { TransferController } from './controller/tranfer/transfer.controller';
+import { AuthorizationModule } from './infrastructure/authorization/authorization.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { TransferController } from './controller/tranfer/transfer.controller';
     DataServicesModule,
     UserUseCaseModule,
     TransferUseCaseModule,
+    AuthorizationModule,
   ],
   controllers: [UserController, TransferController],
   providers: [],

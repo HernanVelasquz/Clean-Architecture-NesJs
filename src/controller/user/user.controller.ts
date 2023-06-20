@@ -1,6 +1,8 @@
 import { Body, Controller, Post } from '@nestjs/common';
+import { UseGuards } from '@nestjs/common/decorators';
 import { Put } from '@nestjs/common/decorators/http/request-mapping.decorator';
 import { from, Observable } from 'rxjs';
+import { AuthGuard } from '@nestjs/passport';
 
 import {
   RechargeAccountUseCase,
@@ -23,6 +25,7 @@ export class UserController {
     return from(this.registerUserUseCase.register(registerUserDto));
   }
 
+  @UseGuards(AuthGuard('jwt'))
   @Put()
   rechargeAccount(
     @Body() rechargeAcconut: RechargeAccountDto,
