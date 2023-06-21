@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsNotEmpty, IsPositive } from 'class-validator';
 import { UserEntity } from 'src/domain';
 
@@ -11,6 +12,7 @@ export class TransferDto extends UserEntity {
    * Correo electrónico del destinatario de la transferencia.
    * @member {string}
    */
+  @ApiProperty()
   @IsEmail()
   @IsNotEmpty()
   toEmail: string;
@@ -19,6 +21,7 @@ export class TransferDto extends UserEntity {
    * Correo electrónico del remitente de la transferencia.
    * @member {string}
    */
+  @ApiProperty()
   @IsEmail()
   @IsNotEmpty()
   fromEmail: string;
@@ -27,6 +30,7 @@ export class TransferDto extends UserEntity {
    * Valor de la transferencia.
    * @member {number}
    */
+  @ApiProperty()
   @IsPositive()
   @IsNotEmpty()
   valueTransfer: number;
