@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { UseGuards } from '@nestjs/common/decorators';
+import { ParseUUIDPipe } from '@nestjs/common/pipes';
 import { AuthGuard } from '@nestjs/passport';
 import { from, Observable } from 'rxjs';
 
@@ -46,7 +47,7 @@ export class TransferController {
 
   @Get(':client_id')
   getHistoryTransfer(
-    @Param('client_id') client_id: string,
+    @Param('client_id', new ParseUUIDPipe({ version: '4' })) client_id: string,
   ): Observable<TransferEntity[]> {
     return from(
       this.getHistoryTransferUseCase.historyTransferUseCase(client_id),
