@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import {
   IsEmail,
   IsNotEmpty,
@@ -18,6 +19,7 @@ export class RegisterUserDto extends UserEntity {
    * @type {string}
    * @memberof RegisterUserDto
    */
+  @ApiProperty()
   @IsString({ message: 'Full Name Is Required' })
   @IsNotEmpty()
   @Length(6, 100)
@@ -28,6 +30,7 @@ export class RegisterUserDto extends UserEntity {
    * @type {string}
    * @memberof RegisterUserDto
    */
+  @ApiProperty()
   @IsString({ message: 'Type document is Required' })
   @IsNotEmpty()
   @MaxLength(5)
@@ -38,6 +41,7 @@ export class RegisterUserDto extends UserEntity {
    * @type {string}
    * @memberof RegisterUserDto
    */
+  @ApiProperty()
   @IsString({ message: 'Document is Required' })
   @IsNotEmpty()
   numberDocument: string;
@@ -47,6 +51,7 @@ export class RegisterUserDto extends UserEntity {
    * @type {string}
    * @memberof RegisterUserDto
    */
+  @ApiProperty()
   @IsNotEmpty()
   @IsEmail()
   email: string;
@@ -56,6 +61,7 @@ export class RegisterUserDto extends UserEntity {
    * @type {string}
    * @memberof RegisterUserDto
    */
+  @ApiProperty()
   @IsString()
   @IsNotEmpty()
   @Length(8, 15, {

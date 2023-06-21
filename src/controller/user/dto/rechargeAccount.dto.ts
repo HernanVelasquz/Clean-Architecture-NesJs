@@ -1,5 +1,6 @@
 import { UserEntity } from 'src/domain';
 import { IsNotEmpty, IsEmail, IsPositive } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 /**
  * @class RechargeAccountDto
@@ -12,6 +13,7 @@ export class RechargeAccountDto extends UserEntity {
    * @type {string}
    * @memberof RechargeAccountDto
    */
+  @ApiProperty()
   @IsNotEmpty()
   @IsEmail()
   email: string;
@@ -21,6 +23,7 @@ export class RechargeAccountDto extends UserEntity {
    * @type {number}
    * @memberof RechargeAccountDto
    */
+  @ApiProperty()
   @IsNotEmpty()
   @IsPositive()
   deposit: number;
