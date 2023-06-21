@@ -11,6 +11,12 @@ import {
 import { UserEntity } from 'src/domain';
 import { RechargeAccountDto, RegisterUserDto } from './dto';
 
+/**
+ * @class UserController
+ * @classdesc Controlador para las rutas relacionadas con los usuarios.
+ * @param {RegisterUserUseCase} registerUserUseCase - Caso de uso para registrar un usuario.
+ * @param {RechargeAccountUseCase} rechargeAccountUseCase - Caso de uso para recargar la cuenta de un usuario.
+ */
 @Controller('user')
 export class UserController {
   constructor(
@@ -18,6 +24,12 @@ export class UserController {
     private readonly rechargeAccountUseCase: RechargeAccountUseCase,
   ) {}
 
+  /**
+   * Ruta POST para registrar un nuevo usuario.
+   * @route POST /user
+   * @param {RegisterUserDto} registerUserDto - Datos del usuario a registrar.
+   * @returns {Observable<UserEntity>} El usuario registrado.
+   */
   @Post()
   registerUser(
     @Body() registerUserDto: RegisterUserDto,
@@ -25,6 +37,12 @@ export class UserController {
     return from(this.registerUserUseCase.register(registerUserDto));
   }
 
+  /**
+   * Ruta PUT para recargar la cuenta de un usuario.
+   * @route PUT /user
+   * @param {RechargeAccountDto} rechargeAcconut - Datos de la recarga de cuenta.
+   * @returns {Observable<UserEntity|null>} El usuario con la cuenta recargada o null si no se encuentra.
+   */
   @UseGuards(AuthGuard('jwt'))
   @Put()
   rechargeAccount(
