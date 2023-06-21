@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { UserEntity } from 'src/domain';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { TransferData } from './transfer.data';
@@ -22,6 +23,7 @@ export class UserData extends UserEntity {
    * @member {string}
    * @description Identificador único generado automáticamente.
    */
+  @ApiProperty({ description: 'Identificador único generado automáticamente' })
   @PrimaryGeneratedColumn('uuid', { name: 'client_id' })
   id: string;
 
@@ -29,6 +31,7 @@ export class UserData extends UserEntity {
    * @member {string}
    * @description Nombre completo del usuario.
    */
+  @ApiProperty({ description: 'Nombre completo del usuario' })
   @Column({ type: 'varchar', length: 255, nullable: false })
   fullName: string;
 
@@ -36,6 +39,7 @@ export class UserData extends UserEntity {
    * @member {string}
    * @description Tipo de documento del usuario.
    */
+  @ApiProperty({ description: 'Tipo de documento del usuario' })
   @Column({ type: 'char', length: 5, nullable: false })
   typeDocument: string;
 
@@ -43,6 +47,7 @@ export class UserData extends UserEntity {
    * @member {string}
    * @description Número de documento del usuario.
    */
+  @ApiProperty({ description: 'Número de documento del usuario' })
   @Column({ type: 'varchar', length: 255, nullable: false, unique: true })
   numberDocument: string;
 
@@ -50,6 +55,7 @@ export class UserData extends UserEntity {
    * @member {string}
    * @description Correo electrónico del usuario.
    */
+  @ApiProperty({ description: 'Correo electrónico del usuario' })
   @Column({ type: 'varchar', length: 255, nullable: false, unique: true })
   email: string;
 
@@ -57,6 +63,7 @@ export class UserData extends UserEntity {
    * @member {string}
    * @description Contraseña del usuario.
    */
+  @ApiProperty({ description: 'Contraseña del usuario' })
   @Column({ type: 'varchar', length: 255, nullable: false, unique: true })
   password: string;
 
@@ -64,6 +71,7 @@ export class UserData extends UserEntity {
    * @member {number}
    * @description Saldo en la cuenta del usuario.
    */
+  @ApiProperty({ description: 'Saldo en la cuenta del usuario' })
   @Column({ type: 'int', nullable: false })
   deposit: number;
 
@@ -71,6 +79,11 @@ export class UserData extends UserEntity {
    * @member {Array<TransferData>}
    * @description Array de transferencias asociadas al usuario.
    */
+  @ApiProperty({
+    isArray: true,
+    type: [TransferData],
+    description: 'Array de transferencias asociadas al usuario',
+  })
   @OneToMany(() => TransferData, (transfers) => transfers.user, {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',

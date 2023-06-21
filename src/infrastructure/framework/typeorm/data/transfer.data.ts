@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { TransferEntity } from 'src/domain';
 import {
   Column,
@@ -26,6 +27,7 @@ export class TransferData extends TransferEntity {
    * @member {string}
    * @description Identificador único generado automáticamente.
    */
+  @ApiProperty({ description: 'Identificador único generado automáticamente' })
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -33,6 +35,9 @@ export class TransferData extends TransferEntity {
    * @member {string}
    * @description Correo electrónico del destinatario de la transferencia.
    */
+  @ApiProperty({
+    description: 'Correo electrónico del destinatario de la transferencia',
+  })
   @Column({ type: 'varchar', length: 255, nullable: false, unique: false })
   toEmail: string;
 
@@ -40,6 +45,9 @@ export class TransferData extends TransferEntity {
    * @member {string}
    * @description Correo electrónico del remitente de la transferencia.
    */
+  @ApiProperty({
+    description: 'Correo electrónico del remitente de la transferencia',
+  })
   @Column({ type: 'varchar', length: 255, nullable: false, unique: false })
   fromEmail: string;
 
@@ -47,6 +55,7 @@ export class TransferData extends TransferEntity {
    * @member {number}
    * @description Valor de la transferencia.
    */
+  @ApiProperty({ description: 'Fecha de la transferencia' })
   @Column({ type: 'int', nullable: false })
   valueTransfer: number;
 
@@ -54,6 +63,7 @@ export class TransferData extends TransferEntity {
    * @member {Date}
    * @description Fecha de la transferencia.
    */
+  @ApiProperty({ description: 'Fecha de la transferencia' })
   @Column({
     name: 'date',
     type: 'timestamp without time zone',
@@ -65,6 +75,10 @@ export class TransferData extends TransferEntity {
    * @member {UserData}
    * @description Usuario asociado a la transferencia.
    */
+  @ApiProperty({
+    type: UserData,
+    description: 'Usuario asociado a la transferencia',
+  })
   @ManyToOne(() => UserData, (user) => user.transactions, {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
