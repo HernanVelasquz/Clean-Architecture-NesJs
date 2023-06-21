@@ -5,8 +5,20 @@ import { catchError, from, Observable, switchMap, throwError } from 'rxjs';
 import { UserEntity } from 'src/domain';
 import { DependencyUserAbstract } from './abstracts';
 
+/**
+ * @class RechargeAccountUseCase
+ * @classdesc Clase que representa el caso de uso para recargar una cuenta.
+ * @extends DependencyUserAbstract
+ */
 @Injectable()
 export class RechargeAccountUseCase extends DependencyUserAbstract {
+  /**
+   * @method RechargeAccountUseCase#rechargeAccount
+   * @description Recarga una cuenta de usuario.
+   * @param {UserEntity} userRechargeAccount - Objeto de la cuenta de usuario a recargar.
+   * @returns {Observable<UserEntity | null>} Observable que emite la cuenta de usuario actualizada o null si no se encuentra la cuenta.
+   * @throws {NotFoundException} Lanza una excepción si no se encuentra la cuenta de usuario.
+   */
   public rechargeAccount(
     userRechargeAccount: UserEntity,
   ): Observable<UserEntity | null> {
