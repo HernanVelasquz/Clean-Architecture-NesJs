@@ -55,7 +55,7 @@ export class RegisterTransferUseCase extends DependencyTransferAbstract {
           this.transferFactoryService.createNewTransfer(transferDto);
         this.dataServices.user.update(fromFactory.id, fromFactory);
         this.dataServices.user.update(toFactory.id, toFactory);
-        return from(this.dataServices.transefer.create(transferFacoty));
+        return from(this.dataServices.transfer.create(transferFacoty));
       }),
     );
   }

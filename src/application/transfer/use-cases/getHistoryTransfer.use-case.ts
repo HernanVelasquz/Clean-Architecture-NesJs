@@ -17,7 +17,7 @@ export class GetHistoryTransferUseCase extends DependencyTransferAbstract {
    * @returns {Observable<TransferEntity[]>} Observable que emite un arreglo de entidades de transferencia correspondientes al historial del usuario.
    */
   public historyTransferUseCase(idUser: string): Observable<TransferEntity[]> {
-    return from(this.dataServices.transefer.getAll()).pipe(
+    return from(this.dataServices.transfer.getAll()).pipe(
       map((historyTransfer) => {
         return historyTransfer.filter((history) => history.user?.id === idUser);
       }),

@@ -15,5 +15,5 @@ export abstract class IDataServices {
    * @member {IGenericRepository<TransferEntity>} IDataServices#transefer
    * @description Repositorio genérico para la entidad de transferencia.
    */
-  abstract transefer: IGenericRepository<TransferEntity>;
+  abstract transfer: IGenericRepository<TransferEntity>;
 }
