@@ -10,8 +10,8 @@ import { TransferUseCaseModule } from './application/transfer/transfer-use-case.
 import { UserUseCaseModule } from './application/user/user-use-case.module';
 import { AuthorizationModule } from './infrastructure/authorization/authorization.module';
 import { DataServicesModule } from './infrastructure/data-service/data-service.module';
-import { UserResolver } from './resolvers/user/user.resolver';
-import { TransferResolver } from './resolvers/transfer/transfer.resolver';
+import { UserResolver } from './controllers/user/user.resolver';
+import { TransferResolver } from './controllers/transfer/transfer.resolver';
 
 @Module({
   imports: [
