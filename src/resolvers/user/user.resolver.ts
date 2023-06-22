@@ -60,6 +60,7 @@ export class UserResolver {
   rechargeAccount(
     @Args('rechargeAcconut') rechargeAcconut: RechargeAccountDto,
   ): Observable<UserDto | null> {
+    console.log(rechargeAcconut);
     return from(this.rechargeAccountUseCase.rechargeAccount(rechargeAcconut));
   }
 }

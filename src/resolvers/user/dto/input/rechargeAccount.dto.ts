@@ -16,7 +16,7 @@ export class RechargeAccountDto extends UserEntity {
    * @memberof RechargeAccountDto
    */
   @ApiProperty()
-  @Field({ nullable: false })
+  @Field(() => String)
   @IsNotEmpty()
   @IsEmail()
   email: string;
@@ -27,7 +27,7 @@ export class RechargeAccountDto extends UserEntity {
    * @memberof RechargeAccountDto
    */
   @ApiProperty()
-  @Field({ nullable: false })
+  @Field(() => Number)
   @IsNotEmpty()
   @IsPositive()
   deposit: number;

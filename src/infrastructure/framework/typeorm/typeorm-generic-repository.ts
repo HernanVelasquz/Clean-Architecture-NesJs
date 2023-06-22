@@ -49,9 +49,7 @@ export class TypeOrmGenericRepository<T extends ObjectLiteral>
    */
   getEmail(email: string): Observable<T | null | T[]> {
     return from(
-      this.repository.findOneBy({
-        where: { email: email },
-      } as unknown as FindOptionsWhere<T>),
+      this.repository.findOneBy({ email } as unknown as FindOptionsWhere<T>),
     );
   }
   /**

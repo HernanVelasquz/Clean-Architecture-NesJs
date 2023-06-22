@@ -20,9 +20,18 @@ type UserDto {
   fullName: String!
   typeDocument: String!
   numberDocument: String!
+  email: String!
   password: String!
   deposit: String!
   transactions: [TransferUserDto!]!
+}
+
+type TransferOutputDto {
+  id: String!
+  toEmail: String!
+  fromEmail: String!
+  valueTransfer: Float!
+  date: DateTime!
 }
 
 type Query {
@@ -32,6 +41,7 @@ type Query {
 type Mutation {
   registerUser(registerUser: RegisterUserDto!): UserDto!
   rechargeAccount(rechargeAcconut: RechargeAccountDto!): UserDto!
+  registerTransfer(createTransferDto: TransferDtoInput!): TransferOutputDto!
 }
 
 input RegisterUserDto {
@@ -45,4 +55,10 @@ input RegisterUserDto {
 input RechargeAccountDto {
   email: String!
   deposit: Float!
+}
+
+input TransferDtoInput {
+  toEmail: String!
+  fromEmail: String!
+  valueTransfer: Float!
 }
