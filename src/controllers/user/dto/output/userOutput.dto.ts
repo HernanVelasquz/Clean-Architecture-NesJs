@@ -2,7 +2,7 @@ import { Field, ObjectType } from '@nestjs/graphql';
 import { TransferUserDto } from '../input/transferUser.dto';
 
 @ObjectType()
-export class UserDto {
+export class UserOutputDto {
   @Field(() => String)
   id?: string;
   @Field(() => String)

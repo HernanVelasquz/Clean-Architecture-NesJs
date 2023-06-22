@@ -10,9 +10,10 @@ import {
 } from 'src/application';
 import { TransferDtoInput } from './dto/input';
 import { TransferOutputDto } from './dto/output';
+import { ParseUUIDPipe } from '@nestjs/common/pipes';
 
 @ApiTags('Transfer')
-// @UseGuards(AuthGuard('jwt'))
+@UseGuards(AuthGuard('jwt'))
 @Resolver()
 export class TransferResolver {
   constructor(
@@ -47,8 +48,26 @@ export class TransferResolver {
       this.registerTransferUseCase.registerTransfer(createTransferDto),
     );
   }
-  @Query(() => String)
-  sayHello(): string {
-    return 'Hello World!';
+  /**
+   * Obtiene el historial de transferencias de un cliente específico.
+   * @method getHistoryTransfer
+   * @param {string} client_id - ID del cliente para el cual se desea obtener el historial de transferencias.
+   * @returns {Observable<TransferEntity[]>} Observable que emite un array de entidades de transferencia correspondientes al historial del cliente.
+   */
+  @ApiResponse({
+    status: 200,
+    description: 'Obtiene historial de transferencias por Id',
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'No hay transferencias con este id',
+  })
+  @Query(() => [TransferOutputDto])
+  getHistoryTransfer(
+    @Args('client_id', new ParseUUIDPipe({ version: '4' })) client_id: string,
+  ): Observable<TransferOutputDto[]> {
+    return from(
+      this.getHistoryTransferUseCase.historyTransferUseCase(client_id),
+    );
   }
 }

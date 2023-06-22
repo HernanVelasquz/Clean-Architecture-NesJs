@@ -35,7 +35,7 @@ type TransferOutputDto {
 }
 
 type Query {
-  sayHello: String!
+  getHistoryTransfer(client_id: String!): [TransferOutputDto!]!
 }
 
 type Mutation {

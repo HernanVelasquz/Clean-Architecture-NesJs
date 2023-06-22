@@ -4,7 +4,7 @@ import { from, Observable } from 'rxjs';
 
 import { RechargeAccountUseCase, RegisterUserUseCase } from 'src/application';
 import { RechargeAccountDto, RegisterUserDto } from './dto/input';
-import { UserDto } from './dto/output/user.dto';
+import { UserOutputDto } from './dto/output/userOutput.dto';
 import { UseGuards } from '@nestjs/common/decorators';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -31,10 +31,10 @@ export class UserResolver {
     status: 409,
     description: 'El usuario ya se encuentra registrado en la base de datos',
   })
-  @Mutation(() => UserDto)
+  @Mutation(() => UserOutputDto)
   registerUser(
     @Args('registerUser') registerUserDto: RegisterUserDto,
-  ): Observable<UserDto> {
+  ): Observable<UserOutputDto> {
     return from(this.registerUserUseCase.register(registerUserDto));
   }
 
@@ -56,10 +56,10 @@ export class UserResolver {
     status: 401,
     description: 'Unauthorized',
   })
-  @Mutation(() => UserDto)
+  @Mutation(() => UserOutputDto)
   rechargeAccount(
     @Args('rechargeAcconut') rechargeAcconut: RechargeAccountDto,
-  ): Observable<UserDto | null> {
+  ): Observable<UserOutputDto | null> {
     console.log(rechargeAcconut);
     return from(this.rechargeAccountUseCase.rechargeAccount(rechargeAcconut));
   }
