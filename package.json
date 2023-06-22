@@ -20,9 +20,12 @@
     "test:e2e": "set SCOPE=test & jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@apollo/server": "^4.7.4",
+    "@nestjs/apollo": "^12.0.3",
     "@nestjs/common": "^9.4.3",
     "@nestjs/config": "^2.3.3",
     "@nestjs/core": "^9.0.0",
+    "@nestjs/graphql": "^12.0.3",
     "@nestjs/passport": "^10.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/swagger": "^7.0.3",
@@ -31,6 +34,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "express-jwt": "^8.4.1",
+    "graphql": "^16.7.0",
     "jwks-rsa": "^3.0.1",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",

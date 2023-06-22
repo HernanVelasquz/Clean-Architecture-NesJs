@@ -1,0 +1,48 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type TransferUserDto {
+  id: String!
+  toEmail: String!
+  fromEmail: String!
+  valueTransfer: Float!
+  date: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type UserDto {
+  id: String!
+  fullName: String!
+  typeDocument: String!
+  numberDocument: String!
+  password: String!
+  deposit: String!
+  transactions: [TransferUserDto!]!
+}
+
+type Query {
+  sayHello: String!
+}
+
+type Mutation {
+  registerUser(registerUser: RegisterUserDto!): UserDto!
+  rechargeAccount(rechargeAcconut: RechargeAccountDto!): UserDto!
+}
+
+input RegisterUserDto {
+  fullName: String!
+  typeDocument: String!
+  numberDocument: String!
+  email: String!
+  password: String!
+}
+
+input RechargeAccountDto {
+  email: String!
+  deposit: Float!
+}

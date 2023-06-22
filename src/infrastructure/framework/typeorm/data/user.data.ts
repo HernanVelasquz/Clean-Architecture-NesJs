@@ -1,3 +1,4 @@
+import { Field, ObjectType, Int, ID } from '@nestjs/graphql';
 import { ApiProperty } from '@nestjs/swagger';
 import { UserEntity } from 'src/domain';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
@@ -17,6 +18,7 @@ import { TransferData } from './transfer.data';
  * @property {Array<TransferData>} transactions - Array de transferencias asociadas al usuario.
  * @exports UserData
  */
+@ObjectType()
 @Entity({ name: 'Users' })
 export class UserData extends UserEntity {
   /**
@@ -24,6 +26,7 @@ export class UserData extends UserEntity {
    * @description Identificador único generado automáticamente.
    */
   @ApiProperty({ description: 'Identificador único generado automáticamente' })
+  // @Field(() => ID)
   @PrimaryGeneratedColumn('uuid', { name: 'client_id' })
   id: string;
 
@@ -32,6 +35,7 @@ export class UserData extends UserEntity {
    * @description Nombre completo del usuario.
    */
   @ApiProperty({ description: 'Nombre completo del usuario' })
+  // @Field(() => String)
   @Column({ type: 'varchar', length: 255, nullable: false })
   fullName: string;
 
@@ -40,6 +44,7 @@ export class UserData extends UserEntity {
    * @description Tipo de documento del usuario.
    */
   @ApiProperty({ description: 'Tipo de documento del usuario' })
+  // @Field(() => String)
   @Column({ type: 'char', length: 5, nullable: false })
   typeDocument: string;
 
@@ -48,6 +53,7 @@ export class UserData extends UserEntity {
    * @description Número de documento del usuario.
    */
   @ApiProperty({ description: 'Número de documento del usuario' })
+  // @Field(() => String)
   @Column({ type: 'varchar', length: 255, nullable: false, unique: true })
   numberDocument: string;
 
@@ -56,6 +62,7 @@ export class UserData extends UserEntity {
    * @description Correo electrónico del usuario.
    */
   @ApiProperty({ description: 'Correo electrónico del usuario' })
+  // @Field(() => String)
   @Column({ type: 'varchar', length: 255, nullable: false, unique: true })
   email: string;
 
@@ -64,6 +71,7 @@ export class UserData extends UserEntity {
    * @description Contraseña del usuario.
    */
   @ApiProperty({ description: 'Contraseña del usuario' })
+  // @Field(() => String)
   @Column({ type: 'varchar', length: 255, nullable: false, unique: true })
   password: string;
 
@@ -72,6 +80,7 @@ export class UserData extends UserEntity {
    * @description Saldo en la cuenta del usuario.
    */
   @ApiProperty({ description: 'Saldo en la cuenta del usuario' })
+  // @Field(() => Int)
   @Column({ type: 'int', nullable: false })
   deposit: number;
 
@@ -84,6 +93,7 @@ export class UserData extends UserEntity {
     type: [TransferData],
     description: 'Array de transferencias asociadas al usuario',
   })
+  // @Field(() => [TransferData])
   @OneToMany(() => TransferData, (transfers) => transfers.user, {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',

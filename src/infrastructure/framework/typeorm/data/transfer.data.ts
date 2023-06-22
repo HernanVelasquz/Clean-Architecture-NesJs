@@ -1,3 +1,4 @@
+import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
 import { ApiProperty } from '@nestjs/swagger';
 import { TransferEntity } from 'src/domain';
 import {
@@ -21,6 +22,7 @@ import { UserData } from './user.data';
  * @property {UserData} user - Usuario asociado a la transferencia.
  * @exports TransferData
  */
+@ObjectType()
 @Entity({ name: 'TransferHistory' })
 export class TransferData extends TransferEntity {
   /**
@@ -28,6 +30,7 @@ export class TransferData extends TransferEntity {
    * @description Identificador único generado automáticamente.
    */
   @ApiProperty({ description: 'Identificador único generado automáticamente' })
+  // @Field(() => ID)
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -38,6 +41,7 @@ export class TransferData extends TransferEntity {
   @ApiProperty({
     description: 'Correo electrónico del destinatario de la transferencia',
   })
+  // @Field(() => String)
   @Column({ type: 'varchar', length: 255, nullable: false, unique: false })
   toEmail: string;
 
@@ -48,6 +52,7 @@ export class TransferData extends TransferEntity {
   @ApiProperty({
     description: 'Correo electrónico del remitente de la transferencia',
   })
+  // @Field(() => String)
   @Column({ type: 'varchar', length: 255, nullable: false, unique: false })
   fromEmail: string;
 
@@ -56,6 +61,7 @@ export class TransferData extends TransferEntity {
    * @description Valor de la transferencia.
    */
   @ApiProperty({ description: 'Fecha de la transferencia' })
+  // @Field(() => Int)
   @Column({ type: 'int', nullable: false })
   valueTransfer: number;
 
@@ -64,6 +70,7 @@ export class TransferData extends TransferEntity {
    * @description Fecha de la transferencia.
    */
   @ApiProperty({ description: 'Fecha de la transferencia' })
+  // @Field(() => Date)
   @Column({
     name: 'date',
     type: 'timestamp without time zone',
@@ -79,6 +86,7 @@ export class TransferData extends TransferEntity {
     type: UserData,
     description: 'Usuario asociado a la transferencia',
   })
+  // @Field(() => UserData)
   @ManyToOne(() => UserData, (user) => user.transactions, {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',

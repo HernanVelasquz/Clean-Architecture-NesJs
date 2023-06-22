@@ -1,13 +1,17 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { ApolloDriverConfig } from '@nestjs/apollo';
+import { ApolloDriver } from '@nestjs/apollo/dist/drivers';
+import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
+import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'node:path';
 
-import { DataServicesModule } from './infrastructure/data-service/data-service.module';
-import { UserUseCaseModule } from './application/user/user-use-case.module';
-import { UserController } from './controller/user/user.controller';
 import { TransferUseCaseModule } from './application/transfer/transfer-use-case.module';
+import { UserUseCaseModule } from './application/user/user-use-case.module';
 import { AuthorizationModule } from './infrastructure/authorization/authorization.module';
-import { TransferController } from './controller/tranfer/transfer.controller';
+import { DataServicesModule } from './infrastructure/data-service/data-service.module';
+import { UserResolver } from './resolvers/user/user.resolver';
+import { TransferResolver } from './resolvers/transfer/transfer.resolver';
 
 @Module({
   imports: [
@@ -19,12 +23,18 @@ import { TransferController } from './controller/tranfer/transfer.controller';
         `.env.${process.env.SCOPE?.trim()}`,
       ),
     }),
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      playground: false,
+      autoSchemaFile: join(process.cwd(), 'src', 'schema.gql'),
+      plugins: [ApolloServerPluginLandingPageLocalDefault()],
+    }),
     DataServicesModule,
     UserUseCaseModule,
     TransferUseCaseModule,
     AuthorizationModule,
   ],
-  controllers: [UserController, TransferController],
-  providers: [],
+  controllers: [],
+  providers: [UserResolver, TransferResolver],
 })
 export class AppModule {}
