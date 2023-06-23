@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UserEntity } from 'src/domain';
+import { UserEntity } from '../../../domain';
 
 /**
  * @class UserFactoryService
