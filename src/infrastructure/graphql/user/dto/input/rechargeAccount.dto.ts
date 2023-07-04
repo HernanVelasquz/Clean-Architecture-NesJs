@@ -1,4 +1,4 @@
-import { UserEntity } from 'src/domain';
+import { UserEntity } from '../../../../../domain';
 import { IsNotEmpty, IsEmail, IsPositive } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { Field, InputType } from '@nestjs/graphql';

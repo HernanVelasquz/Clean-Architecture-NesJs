@@ -1,7 +1,10 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { from, Observable } from 'rxjs';
 
-import { RechargeAccountUseCase, RegisterUserUseCase } from 'src/application';
+import {
+  RechargeAccountUseCase,
+  RegisterUserUseCase,
+} from '../../../application';
 import { GetAccountUseCase } from '../../../application/user/use-cases/getAccount.use-case';
 import { RechargeAccountDto, RegisterUserDto, UserOutputDto } from './dto';
 

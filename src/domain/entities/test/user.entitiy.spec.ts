@@ -8,7 +8,6 @@ describe('User Entity', () => {
     user.typeDocument = 'DNI';
     user.numberDocument = '12345678';
     user.email = 'johndoe@example.com';
-    user.password = 'password123';
     user.deposit = 1000;
     user.transactions = [];
 
@@ -17,7 +16,6 @@ describe('User Entity', () => {
     expect(user.typeDocument).toBe('DNI');
     expect(user.numberDocument).toBe('12345678');
     expect(user.email).toBe('johndoe@example.com');
-    expect(user.password).toBe('password123');
     expect(user.deposit).toBe(1000);
     expect(user.transactions).toEqual([]);
   });

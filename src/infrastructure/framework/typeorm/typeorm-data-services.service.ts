@@ -7,7 +7,7 @@ import {
   IGenericRepository,
   TransferEntity,
   UserEntity,
-} from 'src/domain';
+} from '../../../domain';
 import { TransferData, UserData } from './data';
 import { TypeOrmGenericRepository } from './typeorm-generic-repository';
 

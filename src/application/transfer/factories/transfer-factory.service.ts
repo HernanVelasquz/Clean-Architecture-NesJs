@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { TransferEntity } from 'src/domain';
+import { TransferEntity } from '../../../domain';
 
 /**
  * @class TransferFactoryService

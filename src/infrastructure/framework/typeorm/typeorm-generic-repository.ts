@@ -1,7 +1,7 @@
 import { from, Observable, switchMap } from 'rxjs';
 import { FindOptionsWhere, ObjectLiteral, Repository } from 'typeorm';
 
-import { IGenericRepository } from 'src/domain';
+import { IGenericRepository } from '../../../domain';
 
 /**
  * @class TypeOrmGenericRepository

@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { DataServicesModule } from 'src/infrastructure';
+import { DataServicesModule } from '../../infrastructure';
 import { UserUseCaseModule } from '../user';
 import { TransferFactoryService } from './factories/transfer-factory.service';
 import { GetHistoryTransferUseCase } from './use-cases';

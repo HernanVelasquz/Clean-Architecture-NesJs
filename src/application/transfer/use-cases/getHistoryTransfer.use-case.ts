@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { from, map, Observable } from 'rxjs';
-import { TransferEntity } from 'src/domain';
+import { TransferEntity } from '../../../domain';
 import { DependencyTransferAbstract } from './abstracts';
 
 /**

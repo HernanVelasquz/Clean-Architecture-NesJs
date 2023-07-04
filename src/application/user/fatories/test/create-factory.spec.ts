@@ -21,7 +21,6 @@ describe('Create User Factory', () => {
         typeDocument: 'DNI',
         numberDocument: '12345678',
         email: 'johndoe@example.com',
-        password: 'password123',
         transactions: [],
         deposit: 1000,
       };
@@ -32,7 +31,6 @@ describe('Create User Factory', () => {
       expect(newUser.typeDocument).toBe(createUserDto.typeDocument);
       expect(newUser.numberDocument).toBe(createUserDto.numberDocument);
       expect(newUser.email).toBe(createUserDto.email);
-      expect(newUser.password).toBe(createUserDto.password);
       expect(newUser.transactions).toEqual([]);
       expect(newUser.deposit).toBe(1000);
     });

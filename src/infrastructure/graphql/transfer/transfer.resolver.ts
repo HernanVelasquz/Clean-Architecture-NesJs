@@ -4,7 +4,7 @@ import { from, Observable } from 'rxjs';
 import {
   GetHistoryTransferUseCase,
   RegisterTransferUseCase,
-} from 'src/application';
+} from '../../../application';
 import { TransferDtoInput, TransferOutputDto } from './dto';
 
 /**

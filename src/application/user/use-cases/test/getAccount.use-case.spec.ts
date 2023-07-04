@@ -28,8 +28,6 @@ describe('Get Account Use Case', () => {
     user.fullName = 'John Doe';
     user.email = email;
     user.typeDocument = 'cc';
-    user.numberDocument = '1234567890';
-    user.password = 'secredPassword';
     user.deposit = 1000;
     user.transactions = [];
 

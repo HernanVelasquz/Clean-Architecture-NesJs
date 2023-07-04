@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { IDataServices } from 'src/domain';
+import { IDataServices } from '../../../../domain';
 import { TransferFactoryService } from '../../factories';
 
 /**

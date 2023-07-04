@@ -19,7 +19,6 @@ describe('updateUser', () => {
       typeDocument: 'DNI',
       numberDocument: '12345678',
       email: 'johndoe@example.com',
-      password: 'password123',
       transactions: [],
       deposit: 1000,
     };
@@ -30,7 +29,6 @@ describe('updateUser', () => {
       typeDocument: 'Updated DNI',
       numberDocument: '98765432',
       email: 'updatedemail@example.com',
-      password: 'updatedpassword',
       transactions: [],
       deposit: 2000,
     };
@@ -42,7 +40,6 @@ describe('updateUser', () => {
     expect(updatedUser.typeDocument).toBe(updateUser.typeDocument);
     expect(updatedUser.numberDocument).toBe(updateUser.numberDocument);
     expect(updatedUser.email).toBe(updateUser.email);
-    expect(updatedUser.password).toBe(updateUser.password);
     expect(updatedUser.transactions).toEqual([]);
     expect(updatedUser.deposit).toBe(updateUser.deposit);
   });

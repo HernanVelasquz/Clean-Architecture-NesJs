@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { NotFoundException } from '@nestjs/common/exceptions';
 import { catchError, from, Observable, switchMap, throwError } from 'rxjs';
 
-import { UserEntity } from 'src/domain';
+import { UserEntity } from '../../../domain';
 import { DependencyUserAbstract } from './abstracts';
 
 /**

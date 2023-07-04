@@ -88,6 +88,10 @@
       "!**/*index.ts"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/src/migrations/*",
+      "/src/infrastructure/framework/typeorm/data/*.data.ts"
+    ]
   }
 }

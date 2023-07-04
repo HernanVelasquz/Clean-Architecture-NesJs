@@ -1,9 +1,9 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { from, Observable, map, switchMap } from 'rxjs';
 
-import { UserFactoryService } from 'src/application/user';
-import { IDataServices, TransferEntity, UserEntity } from 'src/domain';
-import { InsufficientFundsException } from 'src/infrastructure';
+import { UserFactoryService } from '../../../application/user';
+import { IDataServices, TransferEntity, UserEntity } from '../../../domain';
+import { InsufficientFundsException } from '../../../infrastructure';
 import { TransferFactoryService } from '../factories';
 import { DependencyTransferAbstract } from './abstracts';
 

@@ -1,5 +1,4 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { ApiProperty } from '@nestjs/swagger';
 import {
   IsEmail,
   IsNotEmpty,
@@ -7,7 +6,7 @@ import {
   Length,
   MaxLength,
 } from 'class-validator';
-import { UserEntity } from 'src/domain';
+import { UserEntity } from '../../../../../domain';
 
 /**
  * @class RegisterUserDto
