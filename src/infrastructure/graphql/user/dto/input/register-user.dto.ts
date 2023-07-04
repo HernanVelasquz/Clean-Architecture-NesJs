@@ -21,7 +21,6 @@ export class RegisterUserDto extends UserEntity {
    * @type {string}
    * @memberof RegisterUserDto
    */
-  @ApiProperty()
   @Field(() => String)
   @IsString({ message: 'Full Name Is Required' })
   @IsNotEmpty()
@@ -33,7 +32,6 @@ export class RegisterUserDto extends UserEntity {
    * @type {string}
    * @memberof RegisterUserDto
    */
-  @ApiProperty()
   @Field(() => String)
   @IsString({ message: 'Type document is Required' })
   @IsNotEmpty()
@@ -45,7 +43,6 @@ export class RegisterUserDto extends UserEntity {
    * @type {string}
    * @memberof RegisterUserDto
    */
-  @ApiProperty()
   @Field(() => String)
   @IsString({ message: 'Document is Required' })
   @IsNotEmpty()
@@ -56,23 +53,8 @@ export class RegisterUserDto extends UserEntity {
    * @type {string}
    * @memberof RegisterUserDto
    */
-  @ApiProperty()
   @Field(() => String)
   @IsNotEmpty()
   @IsEmail()
   email: string;
-
-  /**
-   * Contraseña del usuario.
-   * @type {string}
-   * @memberof RegisterUserDto
-   */
-  @ApiProperty()
-  @Field(() => String)
-  @IsString()
-  @IsNotEmpty()
-  @Length(8, 15, {
-    message: 'Please enter a password betwen 8 and 10 characters',
-  })
-  password: string;
 }

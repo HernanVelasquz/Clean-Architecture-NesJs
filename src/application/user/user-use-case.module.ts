@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 
 import { DataServicesModule } from 'src/infrastructure';
+import { AuthorizationModule } from 'src/infrastructure/authorization/authorization.module';
 import { UserFactoryService } from './fatories';
 import {
   GetAccountUseCase,

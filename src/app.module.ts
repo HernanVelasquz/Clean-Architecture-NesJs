@@ -10,8 +10,9 @@ import { TransferUseCaseModule } from './application/transfer/transfer-use-case.
 import { UserUseCaseModule } from './application/user/user-use-case.module';
 import { AuthorizationModule } from './infrastructure/authorization/authorization.module';
 import { DataServicesModule } from './infrastructure/data-service/data-service.module';
-import { UserResolver } from './controllers/user/user.resolver';
-import { TransferResolver } from './controllers/transfer/transfer.resolver';
+import { UserResolver } from './infrastructure/graphql/user/user.resolver';
+import { GetWayApiController } from './controllers/getwayApi.controller';
+import { TransferResolver } from './infrastructure/graphql';
 
 @Module({
   imports: [
@@ -34,7 +35,7 @@ import { TransferResolver } from './controllers/transfer/transfer.resolver';
     TransferUseCaseModule,
     AuthorizationModule,
   ],
-  controllers: [],
+  controllers: [GetWayApiController],
   providers: [UserResolver, TransferResolver],
 })
 export class AppModule {}

@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { hash } from 'bcrypt';
-import { from, Observable, switchMap, catchError, throwError } from 'rxjs';
-import { UserEntity } from 'src/domain';
-import { DuplicateUserException } from 'src/infrastructure';
+import { from, Observable, catchError, throwError } from 'rxjs';
+import { UserEntity } from '../../../domain/entities/user.entity';
+import { DuplicateUserException } from '../../../infrastructure/exceptions/duplicateUserException.exception';
 import { DependencyUserAbstract } from './abstracts';
 
 /**
@@ -19,13 +18,9 @@ export class RegisterUserUseCase extends DependencyUserAbstract {
    * @returns {Observable<UserEntity>} Observable que emite el usuario registrado.
    * @throws {DuplicateUserException} Lanza una excepción si ya existe un usuario con el mismo correo electrónico.
    */
-  public register(createUserDto: UserEntity): Observable<UserEntity> {
-    return from(hash(createUserDto.password, 10)).pipe(
-      switchMap((hash: string) => {
-        createUserDto.password = hash;
-        const newUser = this.userFactoryService.createNewUser(createUserDto);
-        return from(this.dataServices.user.create(newUser));
-      }),
+  public registerUser(createUserDto: UserEntity): Observable<UserEntity> {
+    const userNew = this.userFactoryService.createNewUser(createUserDto);
+    return from(this.dataServices.user.create(userNew)).pipe(
       catchError(() =>
         throwError(() => new DuplicateUserException(createUserDto.email)),
       ),

@@ -30,11 +30,6 @@ export class UserEntity {
    */
   email: string;
   /**
-   * @member {string} UserEntity#password
-   * @description Contraseña del usuario.
-   */
-  password: string;
-  /**
    * @member {number} UserEntity#deposit
    * @description Monto depositado por el usuario.
    */

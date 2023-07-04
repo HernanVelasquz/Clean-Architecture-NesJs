@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common/decorators';
 import { from, Observable } from 'rxjs';
-import { UserEntity } from 'src/domain';
+import { UserEntity } from '../../../domain';
 import { DependencyUserAbstract } from './abstracts';
 
 /**

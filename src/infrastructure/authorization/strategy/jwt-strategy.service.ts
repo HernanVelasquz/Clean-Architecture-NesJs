@@ -1,7 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
+import * as dotenv from 'dotenv';
 import { passportJwtSecret } from 'jwks-rsa';
+import { join } from 'node:path';
 import { ExtractJwt, Strategy } from 'passport-jwt';
+
+dotenv.config({
+  path: join(process.cwd(), 'environments', `.env.${process.env.SCOPE}`),
+});
 
 /**
  * @class JwtStrategy
@@ -21,7 +27,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         jwksRequestsPerMinute: 5,
         jwksUri: `${process.env.AUTH0_ISSUER_URL}.well-known/jwks.json`,
       }),
-
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       audience: process.env.AUTH0_AUDIENCE,
       issuer: `${process.env.AUTH0_ISSUER_URL}`,

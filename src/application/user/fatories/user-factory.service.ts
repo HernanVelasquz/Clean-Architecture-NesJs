@@ -13,13 +13,12 @@ export class UserFactoryService {
    * @param {UserEntity} createUserDto - Datos del usuario para crear el nuevo usuario.
    * @returns {UserEntity} Nuevo objeto de usuario creado.
    */
-  createNewUser(createUserDto: UserEntity) {
+  createNewUser(createUserDto: UserEntity): any {
     const newUser = new UserEntity();
     newUser.fullName = createUserDto.fullName;
     newUser.typeDocument = createUserDto.typeDocument;
     newUser.numberDocument = createUserDto.numberDocument;
     newUser.email = createUserDto.email;
-    newUser.password = createUserDto.password;
     newUser.transactions = [];
     newUser.deposit = 1000;
     return newUser;
@@ -31,14 +30,13 @@ export class UserFactoryService {
    * @param {UserEntity} updateUser - Datos del usuario para actualizar el objeto de usuario existente.
    * @returns {UserEntity} Nuevo objeto de usuario actualizado.
    */
-  updateUser(updateUser: UserEntity) {
+  updateUser(updateUser: UserEntity): UserEntity {
     const newUser = new UserEntity();
     newUser.id = updateUser.id;
     newUser.fullName = updateUser.fullName;
     newUser.typeDocument = updateUser.typeDocument;
     newUser.numberDocument = updateUser.numberDocument;
     newUser.email = updateUser.email;
-    newUser.password = updateUser.password;
     newUser.deposit = updateUser.deposit;
     newUser.transactions = updateUser.transactions;
     return newUser;

@@ -14,8 +14,6 @@ export class UserOutputDto {
   @Field(() => String)
   email: string;
   @Field(() => String)
-  password: string;
-  @Field(() => String)
   deposit: number;
   @Field(() => [TransferUserDto])
   transactions: TransferUserDto[];

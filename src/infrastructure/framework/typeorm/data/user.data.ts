@@ -71,9 +71,6 @@ export class UserData extends UserEntity {
    * @description Contraseña del usuario.
    */
   @ApiProperty({ description: 'Contraseña del usuario' })
-  // @Field(() => String)
-  @Column({ type: 'varchar', length: 255, nullable: false, unique: true })
-  password: string;
 
   /**
    * @member {number}

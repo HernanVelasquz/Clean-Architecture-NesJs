@@ -27,8 +27,8 @@ export class RechargeAccountUseCase extends DependencyUserAbstract {
     ).pipe(
       switchMap((user: UserEntity) => {
         user.deposit += userRechargeAccount.deposit;
-        const newSadalUser = this.userFactoryService.updateUser(user);
-        return from(this.dataServices.user.create(newSadalUser));
+        const newSaldUser = this.userFactoryService.updateUser(user);
+        return from(this.dataServices.user.create(newSaldUser));
       }),
       catchError(() =>
         throwError(() => new NotFoundException('User not found')),
