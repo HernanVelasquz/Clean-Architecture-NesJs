@@ -13,7 +13,7 @@ export class UserFactoryService {
    * @param {UserEntity} createUserDto - Datos del usuario para crear el nuevo usuario.
    * @returns {UserEntity} Nuevo objeto de usuario creado.
    */
-  createNewUser(createUserDto: UserEntity): any {
+  createNewUser(createUserDto: UserEntity): UserEntity {
     const newUser = new UserEntity();
     newUser.fullName = createUserDto.fullName;
     newUser.typeDocument = createUserDto.typeDocument;
