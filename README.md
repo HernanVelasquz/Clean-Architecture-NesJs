@@ -58,6 +58,17 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Structure Folders
+
+src/
+  - application/ => Application: La aplicación es responsable de orquestar los componentes del dominio y proporcionar una interfaz de usuario.
+  - domain/ => Domain: El dominio es el núcleo del sistema y contiene la lógica de negocio.
+  - controllers/  => Controllers: Endpoints de conexion para su consumo por los clientes
+  - infrastructure/ => Infraestructura: La infraestructura proporciona los servicios necesarios para ejecutar el sistema, como la base de datos, el almacenamiento de archivos y la autenticación.
+
+
+
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
