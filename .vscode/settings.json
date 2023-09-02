@@ -1,9 +1,0 @@
-{
-    "jest.autoRun": "off",
-    "typescript.tsdk": "node_modules\\typescript\\lib",
-    "cSpell.words": [
-        "Correo",
-        "documento",
-        "electrónico"
-    ]
-}
